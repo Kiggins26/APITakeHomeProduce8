@@ -20,4 +20,5 @@
 
 *To run tests `cd ./pkg` and run `go test`*
 
-[^1]: ![Alt text](./formula.png)
+[^1]: ![formula](https://github.com/Kiggins26/APITakeHomeProduce8/assets/30563055/50664071-b52b-46a4-b822-a7804c394470)
+
