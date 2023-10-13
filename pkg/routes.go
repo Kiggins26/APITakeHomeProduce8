@@ -20,7 +20,7 @@ type GetPaymentAmoutBody struct {
 
 func GetPaymentAmountPerPaymentSchedule(c *gin.Context) {
 	body := GetPaymentAmoutBody{}
-	log.Println("GET /calculate-payment has been called")
+	log.Println("POST /calculate-payment has been called")
 	if err := c.BindJSON(&body); err != nil {
 		log.Println("JSON was missing some required values")
 		c.AbortWithError(http.StatusBadRequest, err)

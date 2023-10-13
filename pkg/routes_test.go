@@ -10,7 +10,7 @@ import (
 
 func TestGetPaymentAmountPerPaymentSchedule_ValidRequest_Monthly(t *testing.T) {
 	r := gin.Default()
-	r.GET("/calculate-payment", GetPaymentAmountPerPaymentSchedule)
+	r.POST("/calculate-payment", GetPaymentAmountPerPaymentSchedule)
 
 	requestBody := `{
         "propertyPrice": 200000,
@@ -20,7 +20,7 @@ func TestGetPaymentAmountPerPaymentSchedule_ValidRequest_Monthly(t *testing.T) {
         "paymentSchedule": "monthly"
     }`
 
-	req, _ := http.NewRequest("GET", "/calculate-payment", strings.NewReader(requestBody))
+	req, _ := http.NewRequest("POST", "/calculate-payment", strings.NewReader(requestBody))
 	req.Header.Set("Content-Type", "application/json")
 
 	w := httptest.NewRecorder()
@@ -38,7 +38,7 @@ func TestGetPaymentAmountPerPaymentSchedule_ValidRequest_Monthly(t *testing.T) {
 
 func TestGetPaymentAmountPerPaymentSchedule_ValidRequest_Biweekly(t *testing.T) {
 	r := gin.Default()
-	r.GET("/calculate-payment", GetPaymentAmountPerPaymentSchedule)
+	r.POST("/calculate-payment", GetPaymentAmountPerPaymentSchedule)
 
 	requestBody := `{
         "propertyPrice": 200000,
@@ -48,7 +48,7 @@ func TestGetPaymentAmountPerPaymentSchedule_ValidRequest_Biweekly(t *testing.T) 
         "paymentSchedule": "bi-weekly"
     }`
 
-	req, _ := http.NewRequest("GET", "/calculate-payment", strings.NewReader(requestBody))
+	req, _ := http.NewRequest("POST", "/calculate-payment", strings.NewReader(requestBody))
 	req.Header.Set("Content-Type", "application/json")
 
 	w := httptest.NewRecorder()
@@ -66,7 +66,7 @@ func TestGetPaymentAmountPerPaymentSchedule_ValidRequest_Biweekly(t *testing.T) 
 
 func TestGetPaymentAmountPerPaymentSchedule_ValidRequest_Acc_Biweekly(t *testing.T) {
 	r := gin.Default()
-	r.GET("/calculate-payment", GetPaymentAmountPerPaymentSchedule)
+	r.POST("/calculate-payment", GetPaymentAmountPerPaymentSchedule)
 
 	requestBody := `{
         "propertyPrice": 200000,
@@ -76,7 +76,7 @@ func TestGetPaymentAmountPerPaymentSchedule_ValidRequest_Acc_Biweekly(t *testing
         "paymentSchedule": "accelerated bi-weekly"
     }`
 
-	req, _ := http.NewRequest("GET", "/calculate-payment", strings.NewReader(requestBody))
+	req, _ := http.NewRequest("POST", "/calculate-payment", strings.NewReader(requestBody))
 	req.Header.Set("Content-Type", "application/json")
 
 	w := httptest.NewRecorder()
@@ -94,7 +94,7 @@ func TestGetPaymentAmountPerPaymentSchedule_ValidRequest_Acc_Biweekly(t *testing
 
 func TestGetPaymentAmountPerPaymentSchedule_InvalidRequest(t *testing.T) {
 	r := gin.Default()
-	r.GET("/calculate-payment", GetPaymentAmountPerPaymentSchedule)
+	r.POST("/calculate-payment", GetPaymentAmountPerPaymentSchedule)
 
 	// Invalid request with missing fields
 	requestBody := `{
@@ -103,7 +103,7 @@ func TestGetPaymentAmountPerPaymentSchedule_InvalidRequest(t *testing.T) {
         // Missing other fields
     }`
 
-	req, _ := http.NewRequest("GET", "/calculate-payment", strings.NewReader(requestBody))
+	req, _ := http.NewRequest("POST", "/calculate-payment", strings.NewReader(requestBody))
 	req.Header.Set("Content-Type", "application/json")
 
 	w := httptest.NewRecorder()
@@ -116,7 +116,7 @@ func TestGetPaymentAmountPerPaymentSchedule_InvalidRequest(t *testing.T) {
 
 func TestGetPaymentAmountPerPaymentSchedule_InvalidPayment(t *testing.T) {
 	r := gin.Default()
-	r.GET("/calculate-payment", GetPaymentAmountPerPaymentSchedule)
+	r.POST("/calculate-payment", GetPaymentAmountPerPaymentSchedule)
 
 	requestBody := `{
         "propertyPrice": 200000,
@@ -126,7 +126,7 @@ func TestGetPaymentAmountPerPaymentSchedule_InvalidPayment(t *testing.T) {
         "paymentSchedule": "NULL"
     }`
 
-	req, _ := http.NewRequest("GET", "/calculate-payment", strings.NewReader(requestBody))
+	req, _ := http.NewRequest("POST", "/calculate-payment", strings.NewReader(requestBody))
 	req.Header.Set("Content-Type", "application/json")
 
 	w := httptest.NewRecorder()
@@ -139,7 +139,7 @@ func TestGetPaymentAmountPerPaymentSchedule_InvalidPayment(t *testing.T) {
 
 func TestGetPaymentAmountPerPaymentSchedule_InvalidRequest_Negative_Payment(t *testing.T) {
 	r := gin.Default()
-	r.GET("/calculate-payment", GetPaymentAmountPerPaymentSchedule)
+	r.POST("/calculate-payment", GetPaymentAmountPerPaymentSchedule)
 
 	requestBody := `{
         "propertyPrice": -200000,
@@ -149,7 +149,7 @@ func TestGetPaymentAmountPerPaymentSchedule_InvalidRequest_Negative_Payment(t *t
         "paymentSchedule": "accelerated bi-weekly"
     }`
 
-	req, _ := http.NewRequest("GET", "/calculate-payment", strings.NewReader(requestBody))
+	req, _ := http.NewRequest("POST", "/calculate-payment", strings.NewReader(requestBody))
 	req.Header.Set("Content-Type", "application/json")
 
 	w := httptest.NewRecorder()

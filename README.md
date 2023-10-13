@@ -1,6 +1,6 @@
 # APITakeHomeProduce8
 ## APIs
-- `GET: /calculate-payment` - a GET api for getting the amount for the schedule payment of a mortgage from this formula [^1] 
+- `POST: /calculate-payment` - a POST api for getting the amount for the schedule payment of a mortgage from this formula [^1] 
 ## How to run locally
 ### Install Go
 1. Run `wget https://go.dev/dl/go1.21.3.linux-amd64.tar.gz`

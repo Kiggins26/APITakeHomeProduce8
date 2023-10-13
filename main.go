@@ -11,7 +11,7 @@ import (
 func main() {
 	log.Println("starting server")
 	r := gin.Default()
-	r.GET("/calculate-payment", pkg.GetPaymentAmountPerPaymentSchedule)
+	r.POST("/calculate-payment", pkg.GetPaymentAmountPerPaymentSchedule)
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
