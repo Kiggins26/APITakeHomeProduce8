@@ -1,14 +1,20 @@
 package main
 
 import (
-//    "log"
-    "api.go/pkg"
+	"api.go/pkg"
+	"log"
+	"os"
 
-    "github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-  r := gin.Default()
-  r.GET("/calculate-payment", pkg.GetPaymentAmountPerPaymentSchedule)
-  r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	log.Println("starting server")
+	r := gin.Default()
+	r.GET("/calculate-payment", pkg.GetPaymentAmountPerPaymentSchedule)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	r.Run("0.0.0.0:" + port) // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 }
