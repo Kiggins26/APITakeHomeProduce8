@@ -11,6 +11,7 @@ import (
 func main() {
 	log.Println("starting server")
 	r := gin.Default()
+    r.Use(pkg.CorsMiddleware())
 	r.POST("/calculate-payment", pkg.GetPaymentAmountPerPaymentSchedule)
 	port := os.Getenv("PORT")
 	if port == "" {
