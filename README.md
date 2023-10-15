@@ -1,6 +1,6 @@
 # APITakeHomeProduce8
 ## APIs
-- `POST: /calculate-payment` - a POST api for getting the amount for the schedule payment of a mortgage from this formula [^1] 
+- `POST: /calculate-payment` - a POST api for getting the amount for the schedule payment of a mortgage from this formula [^1] *json examples can be found in the example curl below*
 ## How to run locally
 ### Install Go
 1. Run `wget https://go.dev/dl/go1.21.3.linux-amd64.tar.gz`
@@ -21,10 +21,10 @@
 
 ### Testing Live 
 
-`curl -X POST https://apitakehomeproduce8-production.up.railway.app/calculate-payment -H "Content-Type: application/json" -d '{"propertyPrice": 10000.00, "downPayment": 100.00, "annualInterestRate": 1.1, "amortizationPeriod": 30, "paymentSchedule": "monthly" }'`
+`curl -X POST https://apitakehomeproduce8-production.up.railway.app/calculate-payment -H "Content-Type: application/json" -d '{"propertyPrice": 10000.00, "downPayment": 100.00, "annualInterestRate": .01, "amortizationPeriod": 30, "paymentSchedule": "monthly" }'`
 
 ### Testing Local
-`curl -X POST http://localhost:8080/calculate-payment -H "Content-Type: application/json" -d '{"propertyPrice": 10000.00, "downPayment": 100.00, "annualInterestRate": 1.1, "amortizationPeriod": 30, "paymentSchedule": "monthly" }'`
+`curl -X POST http://localhost:8080/calculate-payment -H "Content-Type: application/json" -d '{"propertyPrice": 10000.00, "downPayment": 100.00, "annualInterestRate": .01, "amortizationPeriod": 30, "paymentSchedule": "monthly" }'`
 
 [^1]: ![formula](https://github.com/Kiggins26/APITakeHomeProduce8/assets/30563055/50664071-b52b-46a4-b822-a7804c394470)
 
