@@ -44,7 +44,7 @@ func GetPaymentAmountPerPaymentSchedule(c *gin.Context) {
 
 	principle := body.PropertyPrice - body.DownPayment
 	paymentScheduleInterestRate := body.AnnualInterestRate / float64(PaymentFreqAnum)
-	if body.AmortizationPeriod%5 != 0 {
+	if body.AmortizationPeriod%5 != 0 || (body.AmortizationPeriod > 30 || body.AmortizationPeriod < 5) {
 		log.Println("Amortization period was not a 5 based slider")
 		c.AbortWithError(http.StatusBadRequest, errors.New("Amortization period not on a 5 years increment"))
 		return
